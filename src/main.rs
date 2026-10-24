@@ -6,9 +6,7 @@ use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitEx
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let otlp_exporter = SpanExporter::builder()
-        .with_tonic()
-        .build()?;
+    let otlp_exporter = SpanExporter::builder().with_tonic().build()?;
     let provider = SdkTracerProvider::builder()
         .with_batch_exporter(otlp_exporter)
         .build();
