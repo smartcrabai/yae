@@ -1,5 +1,5 @@
 # Chef stage: cargo-chef is preinstalled
-FROM lukemathwalker/cargo-chef:latest-rust-1.99 AS chef
+FROM lukemathwalker/cargo-chef:latest-rust-1.99@sha256:5650c1203a4f2497c6268427c034efcb98f38ecbab86061b3d78d128aba43a1b AS chef
 
 WORKDIR /app
 
@@ -34,7 +34,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry,sharing=locked \
     cp /app/target/release/yae /tmp/yae
 
 # Runtime stage: Create minimal production image
-FROM gcr.io/distroless/cc-debian13:nonroot@sha256:d97bc0a941b8d4be647dc0ee75b264ddbb772f1ac5ba690a4309c00723b23775
+FROM gcr.io/distroless/cc-debian13:nonroot@sha256:3ee00291cf386ec52a552e6a858d555debd74776eb4bfa53fa3df2cd6677515e
 
 WORKDIR /app
 
